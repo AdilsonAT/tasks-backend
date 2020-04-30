@@ -20,14 +20,14 @@ pipeline {
      		}
      	}
      	
-     	stage ('API Test') {
- 			steps {
- 				dir('api-test'){
- 		           	git credentialsId: 'github_loggin', url: 'https://github.com/AdilsonAT/tasks-api-test' 
-					bat 'mvn test'
-				}
-			}              
-     	}
+//     	stage ('API Test') {
+// 			steps {
+// 				dir('api-test'){
+// 		           	git credentialsId: 'github_loggin', url: 'https://github.com/AdilsonAT/tasks-api-test' 
+//					bat 'mvn test'
+//				}
+//			}              
+//     	}
      	
  		stage ('Deploy Frontend') {
 			steps {
@@ -38,5 +38,14 @@ pipeline {
      			}
      		}
      	}
+     	     	
+//     	stage ('Functional Test') {
+// 			steps {
+// 				dir('functional-test'){
+// 		           	git credentialsId: 'github_loggin', url: 'https://github.com/AdilsonAT/taskes-functional-test' 
+//					bat 'mvn test'
+//				}
+//			}              
+//    	}
 	}
 }
