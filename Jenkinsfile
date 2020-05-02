@@ -8,11 +8,11 @@ pipeline {
 			}
 		}
 		
-		stage ('Unit Tests') {
-			steps {
-				bat 'mvn test'
-			}
-		}
+//		stage ('Unit Tests') {
+//			steps {
+//				bat 'mvn test'
+//			}
+//		}
 
 		stage ('Deploy Backend') {
 			steps {
@@ -44,6 +44,15 @@ pipeline {
 // 				dir('functional-test'){
 // 		           	git credentialsId: 'github_loggin', url: 'https://github.com/AdilsonAT/taskes-functional-test' 
 //					bat 'mvn test'
+//				}
+//			}              
+//    	}
+
+//     	stage ('Health Check') {
+// 			steps {
+//				sleep(5)
+// 				dir('functional-test'){ 
+//					bat 'mvn verify -Dskip.surefire.tests'
 //				}
 //			}              
 //    	}
