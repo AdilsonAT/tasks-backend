@@ -8,11 +8,11 @@ pipeline {
 			}
 		}
 		
-//		stage ('Unit Tests') {
-//			steps {
-//				bat 'mvn test'
-//			}
-//		}
+		stage ('Unit Tests') {
+			steps {
+				bat 'mvn test'
+			}
+		}
 
 		stage ('Deploy Backend') {
 			steps {
@@ -20,14 +20,14 @@ pipeline {
      		}
      	}
      	
-//     	stage ('API Test') {
-// 			steps {
-// 				dir('api-test'){
-// 		           	git credentialsId: 'github_loggin', url: 'https://github.com/AdilsonAT/tasks-api-test' 
-//					bat 'mvn test'
-//				}
-//			}              
-//     	}
+     	stage ('API Test') {
+ 			steps {
+ 				dir('api-test'){
+ 		           	git credentialsId: 'github_loggin', url: 'https://github.com/AdilsonAT/tasks-api-test' 
+					bat 'mvn test'
+				}
+			}              
+     	}
      	
  		stage ('Deploy Frontend') {
 			steps {
@@ -39,23 +39,23 @@ pipeline {
      		}
      	}
      	     	
-//     	stage ('Functional Test') {
-// 			steps {
-// 				dir('functional-test'){
-// 		           	git credentialsId: 'github_loggin', url: 'https://github.com/AdilsonAT/taskes-functional-test' 
-//					bat 'mvn test'
-//				}
-//			}              
-//    	}
+     	stage ('Functional Test') {
+ 			steps {
+ 				dir('functional-test'){
+ 		           	git credentialsId: 'github_loggin', url: 'https://github.com/AdilsonAT/taskes-functional-test' 
+					bat 'mvn test'
+				}
+			}              
+    	}
 
-//     	stage ('Health Check') {
-// 			steps {
-//				sleep(5)
-// 				dir('functional-test'){ 
-//					bat 'mvn verify -Dskip.surefire.tests'
-//				}
-//			}              
-//    	}
+     	stage ('Health Check') {
+ 			steps {
+				sleep(5)
+ 				dir('functional-test'){ 
+					bat 'mvn verify -Dskip.surefire.tests'
+				}
+			}              
+    	}
 
 		post {
 		    always {
