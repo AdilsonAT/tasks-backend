@@ -56,18 +56,17 @@ pipeline {
 				}
 			}              
     	}
+    }
 
-		post {
-		    always {
-		        junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml, api-test/target/surefire-reports/*.xml, functional-test/target/surefile-reports/*.xml, functional-test/target/failsafe-reports/*.xml'
-		    }
-			unsuccessful{
-			    emailext attachLog: true, body: 'See the attached log bellow', subject: 'Build has failed', to: 'adilson.anjos.teixeira@gmail.com'
-			}
-			fixed{
-			    emailext attachLog: true, body: 'See the attached log bellow', subject: 'Build is fine!!', to: 'adilson.anjos.teixeira@gmail.com'
-			}
+	post {
+	    always {
+	  		junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml, api-test/target/surefire-reports/*.xml, functional-test/target/surefile-reports/*.xml, functional-test/target/failsafe-reports/*.xml'
+	    }
+		unsuccessful{			    
+			emailext attachLog: true, body: 'See the attached log bellow', subject: 'Build has failed', to: 'adilson.anjos.teixeira@gmail.com'
 		}
-
+		fixed{
+		    emailext attachLog: true, body: 'See the attached log bellow', subject: 'Build is fine!!', to: 'adilson.anjos.teixeira@gmail.com'
+		}
 	}
 }
